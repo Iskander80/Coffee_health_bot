@@ -14,12 +14,12 @@ async def check_available_devices(bot, callback):
         with open(os.devnull, 'w') as DEVNULL:
             try:
                 subprocess.check_call(
-                    ['ping', '-t', '2', ip_dev],
+                    ['ping', '-t', '2', ip_dev[0]],
                     stdout=DEVNULL,  # suppress output
                     stderr=DEVNULL
                 )
-                await approval_message(bot, callback, ip_dev)
+                await approval_message(bot, callback, ip_dev[1])
             except subprocess.CalledProcessError:
-                await warning_message(bot, callback, ip_dev)
+                await warning_message(bot, callback, ip_dev[1])
 
 
