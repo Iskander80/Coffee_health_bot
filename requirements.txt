@@ -1,0 +1,16 @@
+selenium
+pytest~=7.4.2
+pytest-xdist
+requests~=2.31.0
+faker
+jsonpath
+assertpy~=1.1
+pytest-html
+pydantic
+telebot~=0.0.5
+schedule~=1.2.1
+scheduler~=0.8.4
+aiohttp
+aioschedule~=0.5.2
+urllib3>=1.26.5,<2.0
+python_version >= '3.7'
