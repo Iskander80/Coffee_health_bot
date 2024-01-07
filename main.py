@@ -8,12 +8,15 @@ import schedule
 from telebot import types
 from telebot.async_telebot import AsyncTeleBot
 import aioschedule
-import tmp
+
 
 bot = AsyncTeleBot(urls.BOT_TOKEN, disable_notification=True)
 
+markup1 = types.ReplyKeyboardMarkup(is_persistent=True, resize_keyboard=True)
+menu_btn = types.KeyboardButton('В начало')
+markup1.row(menu_btn)
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(func=lambda callback: True)
 async def main(message):
     markup = types.InlineKeyboardMarkup()
     btn_available_devices = types.InlineKeyboardButton('Проверить достуность кофемашин', callback_data='PING_DEV')
@@ -40,5 +43,5 @@ async def start(message):
         await main(message)
 
 
-asyncio.run(bot.polling())
+asyncio.run(bot.polling(non_stop=True, request_timeout=90))
 asyncio.run(bot.infinity_polling())

@@ -14,7 +14,7 @@ async def check_available_devices(bot, callback):
         with open(os.devnull, 'w') as DEVNULL:
             try:
                 subprocess.check_call(
-                    ['ping', '-t', '2', ip_dev[0]],
+                    ['ping', '-n', '2', ip_dev[0]],
                     stdout=DEVNULL,  # suppress output
                     stderr=DEVNULL
                 )
